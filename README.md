@@ -2,6 +2,8 @@
 
 Internship Pathway Recommender recommends bridge experiences using descriptive pathway evidence. It does **not** predict hiring outcomes or measure personal potential. The included dataset is synthetic and deliberately small so ranking behavior can be inspected directly.
 
+[View the live project](https://aadya1245.github.io/internship-pathway-recommender/)
+
 ## Run locally
 
 ```bash
@@ -18,17 +20,9 @@ npm run serve
 - Precision@k, recall@k, NDCG@k, and MRR implementations
 - Deterministic ranking, metric, scenario, and ablation tests
 
-## Graph schema
+## How it works
 
-```mermaid
-graph LR
-  P[Anonymized profile] -->|HAS_SKILL| S[Skill]
-  P -->|BUILT| J[Project type]
-  P -->|HELD_ROLE| E[Experience type]
-  E -->|PRECEDED| O[Opportunity]
-  O -->|BUILDS| S
-  O -->|PRECEDED| R[Role family]
-```
+Profiles are represented through skills, projects, and experience types. Opportunities are scored by the gaps they address, the skills they build on, and the pathway evidence connecting them to a target role. The interface keeps the explanation tied to those exact scoring features and shows uncertainty when the comparison data is limited.
 
 ## Model comparison plan
 
