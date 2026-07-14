@@ -13,9 +13,12 @@ npm run serve
 
 ## Implemented
 
+- Editable skills, experiences, education, target role, organization, and season
+- Browser-local profile persistence and automatic reranking
 - Transparent rule, content-similarity, graph-path, and hybrid baselines
 - Feature-grounded explanations (no invented LLM rationale)
 - Counterfactual scenario simulation without mutating the profile
+- One-click application of a simulated skill or experience to the saved profile
 - Institution-feature ablation and sensitivity reporting
 - Precision@k, recall@k, NDCG@k, and MRR implementations
 - Deterministic ranking, metric, scenario, and ablation tests
