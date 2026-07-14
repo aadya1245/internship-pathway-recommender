@@ -1,0 +1,48 @@
+# Internship Pathway Recommender
+
+Internship Pathway Recommender recommends bridge experiences using descriptive pathway evidence. It does **not** predict hiring outcomes or measure personal potential. The included dataset is synthetic and deliberately small so ranking behavior can be inspected directly.
+
+## Run locally
+
+```bash
+npm test
+npm run serve
+```
+
+## Implemented
+
+- Transparent rule, content-similarity, graph-path, and hybrid baselines
+- Feature-grounded explanations (no invented LLM rationale)
+- Counterfactual scenario simulation without mutating the profile
+- Institution-feature ablation and sensitivity reporting
+- Precision@k, recall@k, NDCG@k, and MRR implementations
+- Deterministic ranking, metric, scenario, and ablation tests
+
+## Graph schema
+
+```mermaid
+graph LR
+  P[Anonymized profile] -->|HAS_SKILL| S[Skill]
+  P -->|BUILT| J[Project type]
+  P -->|HELD_ROLE| E[Experience type]
+  E -->|PRECEDED| O[Opportunity]
+  O -->|BUILDS| S
+  O -->|PRECEDED| R[Role family]
+```
+
+## Model comparison plan
+
+1. Fixed-weight rules provide a human-auditable floor.
+2. Content scoring measures structured skill overlap.
+3. Path scoring captures common sequences without implying causation.
+4. The hybrid combines gap fit, skill overlap, path evidence, and a prior.
+5. A production study adds logistic/gradient-boosted rankers only after collecting licensed, consented outcomes.
+
+## Responsible use / model card
+
+- No names, photos, protected attributes, sensitive inference, or application automation.
+- Institution identity is optional, treated as potentially biased, and tested through controlled-pair ablation.
+- Explanations are derived from features used by the scorer.
+- Sparse subgroup coverage must be displayed as uncertainty.
+- Recommendations describe dataset patterns and never determine an individual’s potential or likelihood of being hired.
+- The UI’s model comparison figures are labeled demo fixtures, not fabricated experimental findings.
